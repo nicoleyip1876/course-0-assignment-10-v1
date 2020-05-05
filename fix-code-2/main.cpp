@@ -6,7 +6,7 @@ struct Student {
   string name;
   unsigned int age;
   unsigned int gpa;
-}
+};
 
 int main() {
   Student my_student;
@@ -17,8 +17,8 @@ int main() {
   cout << "What is your heros gpa: ";
   cin >> my_student.gpa;
 
-  cout << "You have enrolled student: " << my_student << endl;
-  cout << "The students is " << age << "years old." << endl;
-  cout << "The student has a gpa of: " << gpa << endl;
+  cout << "You have enrolled student: " << my_student.name << endl;
+  cout << "The students is " << my_student.age << "years old." << endl;
+  cout << "The student has a gpa of: " << my_student.gpa << endl;
   return 0;
 }
