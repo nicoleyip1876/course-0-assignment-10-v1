@@ -18,7 +18,7 @@ int main() {
   cin >> my_student.gpa;
 
   cout << "You have enrolled student: " << my_student.name << endl;
-  cout << "The students is " << my_student.age << "years old." << endl;
+  cout << "The students is " << my_student.age << " years old." << endl;
   cout << "The student has a gpa of: " << my_student.gpa << endl;
   return 0;
 }
