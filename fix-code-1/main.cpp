@@ -7,7 +7,7 @@ struct Hero {
   string title,
   unsigned int age,
   string weapon
-}
+};
 
 int main() {
   Hero my_hero;
