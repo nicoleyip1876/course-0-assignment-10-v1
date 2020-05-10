@@ -1,6 +1,4 @@
 #include <iostream>
-#include <string>
-using namespace std;
 
 // ------------------- DO NOT CHANGE THIS IN THIS SECTION -------------------
 // --------------------------------------------------------------------------
@@ -23,88 +21,152 @@ struct Budget {
 };
 
 /* Prints out a budget in a human readable foramt.
- * Args:
+ * Args: 
  *   budget: A Budget Type to Print.
  */
 void Print(Budget budget) {
     if (budget.category == 1) {
-        cout << "Shopping: ";
+        std::cout << "Shopping: ";
     } else if (budget.category == 2) {
-        cout << "Transportation: ";
+        std::cout << "Transportation: ";
     } else if (budget.category == 3) {
-        cout << "Other: ";
+        std::cout << "Other: ";
     } else {
-        cout << "Error Invalid Category! ";
+        std::cout << "Error Invalid Category! ";
     }
-    cout << '$' << budget.limit;
+    std::cout << '$' << budget.limit;
 }
 // -----------------------------------------------------------------------
 // -----------------------------------------------------------------------
 // -----------------------------------------------------------------------
 
-Budget FromUser() {
+/* Get total cost for the specified category
+ * Args:
+ *  category: the category for which the total is desired
+ *  item_0: A purchase, can be any category
+ *  item_1: A purchase, can be any category
+ *  item_2: A purchase, can be any category
+ * Returns:
+ *   total cost of all purchases in the specified category.
+ */
+int GetTotalForCategory(unsigned int category, Purchase item_0, Purchase item_1, Purchase item_2) {  
+
+ 
+  /* unsigned int A = 1;
+   * unsigned int B = 1;
+   * int C = ??;
+   * unsigned int D = 1;
+   * int E = ??;
+   * unsigned int F = 1;
+   * int G = ??;
+   * Someone sets A - G using some code you can't see.
+   * int total = GetTotalForCategory(
+   *              category = A, 
+   *              item_0 = {category: B, amount: C}, 
+   *              item_1 = {category: D, amount: E}, 
+   *              item_2 = {category: F, amount: G});
+   *
+   * A = 1, B = 1, D = 1, F = 1      : total = C + E + G
+   * A = 2, B = 1, D = 1, F = 1      : total = 0
+   * A = 2, B = 1, D = 2, F = 1      : total = E
+   * A = 2, B = 1, D = 2, F = 2      : total = E + G
+   * A = 100, B = 100, D = 20, F = 21: total = C
+   */
+   
+  /* create total = 0
+   * Check if A matches B:
+   *      Add C to total
+   * Check if A matches D:
+   *      Add E to total
+   * Check if F matches A:
+   *      Add G to total
+   * return total
+   */
+
+   // Write code
+   int total = 0;
+   if (category == item_0.category) {
+     total += item_0.amount;
+   }
+   if (category == item_1.category) {
+     total += item_1.amount;
+   }
+   if (category == item_2.category) {
+     total += item_2.amount;
+   }
+   return total;
+}
+
+//how do I incoporate category_num into the function? Yout put 1,2,3 respectively in the arguments which I labeled as category_num
+Budget GetBudgetFromUser(int category_num) {
     Budget budget;
-    cin << budget.category;
-    cin << budget.limit;
+     budget.category = category_num;
+    std::cin >> budget.limit;
     return budget;
 }
 
-
-Purchase FromUser() {
-Purchase item;
-    cin << item.category;
-cin << item.limit;
+Purchase GetPurchaseFromUser() {
+    Purchase item;
+    std::cout << "Enter a category: 1, 2, 3" << std::endl;
+    std::cin >> item.category;
+    std::cout << "Enter a amount" << std::endl;
+    std::cin >> item.amount;
     return item;
 }
 
+void Print(Purchase item) {
+  std::cout << "Item category is: " << item.category << std::endl;
+  std::cout << "Item amount is: " << item.amount << std::endl;
+}
 
 
 // ------------------- DO NOT CHANGE CODE IN THIS SECTION -------------------
 // ----------------------- Updating comments is ok. -------------------------
 // --------------------------------------------------------------------------
 
-/* The comment for this function is removed, try to understand what this
- * function does by reading it. Once you understand, you are welcome to update
+/* The comment for this function is removed, try to understand what this 
+ * function does by reading it. Once you understand, you are welcome to update 
  * this comment to help you remember.
  */
 void BudgetStatus(Budget budget, int total_spent) {
-    cout << "Budget ";
+    std::cout << "Budget ";
     Print(budget);
+    std::cout << " You spent $" << total_spent;
     if (total_spent < budget.limit) {
-        cout << " And you remained within your budget!";
+        std::cout << " and you remained within your budget!";
     } else {
-        cout << " You blew the budget!";
+        std::cout << " and you blew the budget!";
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
-/* The comment for this function is removed, try to understand what this
- * function does by reading it. Once you understand, you are welcome to update
+/* The comment for this function is removed, try to understand what this 
+ * function does by reading it. Once you understand, you are welcome to update 
  * this comment to help you remember. Feel free to add comments before lines in
  * the code below as well.
  */
 int main() {
-    cout << "Enter a limit for shopping category" << endl;
+    std::cout << "Enter a limit for shopping category" << std::endl;
     Budget limit_shopping = GetBudgetFromUser(1);
     Print(limit_shopping);
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "Enter a limit for transportation category" << endl;
+    std::cout << "Enter a limit for transportation category" << std::endl;
     Budget limit_transportation = GetBudgetFromUser(2);
     Print(limit_transportation);
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "Enter a limit for other category" << endl;
+    std::cout << "Enter a limit for other category" << std::endl;
     Budget limit_other = GetBudgetFromUser(3);
     Print(limit_other);
-    cout << endl;
+    std::cout << std::endl;
 
     Purchase item0 = GetPurchaseFromUser();
     Print(item0);
-
+    
     Purchase item1 = GetPurchaseFromUser();
     Print(item1);
-
+    
     Purchase item2 = GetPurchaseFromUser();
     Print(item2);
 
